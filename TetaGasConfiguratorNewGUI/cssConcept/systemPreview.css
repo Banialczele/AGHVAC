@@ -311,11 +311,12 @@
 
 #actionsSegment0 #segmentDeviceLabel {
   display: grid;
-  grid-template-columns: 250px 160px;
+  width: 100%;
+  grid-template-columns: 225px 50px 125px;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    "description UPSdescription"
-    "modControlSelect modControlUPS";
+    "description UPSdescription possibleMod"
+    "modControlSelect modControlUPS possibleMod";
 }
 
 #segmentDeviceLabel:first-child {
@@ -324,7 +325,12 @@
 
 #segmentDeviceLabel .upsDescription {
   grid-area: UPSdescription;
-  justify-self: center;
+  place-self: center;
+}
+
+#segmentDeviceLabel .possibleMODControls {
+  grid-area: possibleMod;
+  align-self: end;
 }
 
 #segmentDeviceLabel .segmentDeviceSelect {
@@ -358,4 +364,5 @@
 #segmentDeviceLabel #modControlBatteryBackUp {
   grid-area: modControlUPS;
   justify-self: center;
+  margin: 0;
 }

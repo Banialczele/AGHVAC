@@ -20,7 +20,7 @@ function calculateRealisticSystemStatus(supplyType, cable, busSegments) {
       deviceCurrent = device.current_A;
     } else if (device.power_W != null) {
       deviceCurrent = device.power_W / voltageAtNode;
-    } 
+    }
 
     // Suma prądów na tym odcinku = prąd urządzenia + prąd downstream (czyli z poprzedniego "końca")
     let totalCurrent = currentAtNode + deviceCurrent;
@@ -58,25 +58,33 @@ function calculateRealisticSystemStatus(supplyType, cable, busSegments) {
   const maxVoltage = Number(supplyType.outputVoltage);
   const maxCurrent = Number(supplyType.outputCurrent);
   const maxPower = maxVoltage * maxCurrent;
-
+  const calcResult = {
+    segmentData,
+    requiredSupplyVoltage,
+    requiredSupplyCurrent,
+    requiredSupplyPower
+  };
   // Sprawdź czy zasilacz daje radę
   if (
     requiredSupplyVoltage > maxVoltage ||
     requiredSupplyCurrent > maxCurrent ||
     requiredSupplyPower > maxPower
   ) {
-    return { valid: false, segmentData, requiredSupplyVoltage, requiredSupplyCurrent, requiredSupplyPower };
+    return { valid: false, calcResult };
   }
 
   // Sprawdź na każdym segmencie czy napięcie przy urządzeniu >= jego minVoltage
   for (const s of segmentData) {
     if (s.voltageAtNode < busSegments[s.segmentIndex].detector.minVoltage_V) {
-      return { valid: false, segmentData, requiredSupplyVoltage, requiredSupplyCurrent, requiredSupplyPower };
+      return { valid: false, calcResult };
     }
   }
-  return { valid: true, segmentData, requiredSupplyVoltage, requiredSupplyCurrent, requiredSupplyPower };
+
+  const validationErrors = validateSystemElectrically(busSegments, calcResult);
+  return { valid: true, calcResult, validationErrors };
 }
 
+//funkcja zwracająca wszystkie poprawne konfiguracje zasilacz-kabel, które są w stanie "uciągnąć" stworzony system
 function calculateAllSystemVariants() {
   const bus = systemData.bus;
   const cables = Cables;
@@ -85,13 +93,14 @@ function calculateAllSystemVariants() {
   const selectedSupply = systemData.supplyType;
   const allResults = [];
 
+  //zbieramy napięcia dostępne w zasilaczach
   function getAvailableVoltages(supply) {
     const voltages = [];
     if (supply.description?.voltageOut_V) voltages.push(supply.description.voltageOut_V);
     if (supply.description?.voltageOut_V48) voltages.push(supply.description.voltageOut_V48);
     return voltages;
   }
-
+  //bierzemy konkretny zasilacz i przypisujemy dane potrzebne do dalszych obliczeń
   function evaluateSupplyWithVoltage(baseSupply, voltage, isUserSelected = false) {
     const supply = {
       ...baseSupply,
@@ -103,7 +112,7 @@ function calculateAllSystemVariants() {
     };
 
     const validCables = [];
-
+    //sprawdzamy każdy kabel dla konkretnego zasilacza czy jest w stanie podołać zadaniu, zwracamy tylko kable OK.
     for (const cable of cables) {
       const result = calculateRealisticSystemStatus(
         supply,
@@ -113,19 +122,34 @@ function calculateAllSystemVariants() {
       if (result.valid) {
         validCables.push({
           cableType: cable,
-          totalPower: Math.ceil(result.requiredSupplyPower),
-          totalCurrent: Math.ceil(result.requiredSupplyCurrent),
-          totalVoltage: Math.ceil(result.requiredSupplyVoltage),
+          totalPower: Math.ceil(result.calcResult.requiredSupplyPower),
+          totalCurrent: Math.ceil(result.calcResult.requiredSupplyCurrent),
+          totalVoltage: Math.ceil(result.calcResult.requiredSupplyVoltage),
         });
       }
     }
-
+    //jeżeli żaden kabel nie działa pomiń zasilacz.
     if (validCables.length === 0) return null;
+
+    const errors = [];
+    //walidacja danych wprowadzonych przez użytkownika
+    const validatorsSimple = [
+      () => validateTotalWireLength(),
+      () => validateSignallersCount(),
+      () => validateValvesCount()
+    ];
+
+
+    for (const validator of validatorsSimple) {
+      const r = validator();
+      if (!r.valid) errors.push(r);
+    }
 
     return {
       supplyType: supply,
       isUserSelected,
       validCables,
+      errors
     };
   }
 
@@ -148,4 +172,72 @@ function calculateAllSystemVariants() {
   }
 
   return allResults;
+}
+
+function validateSystem() {
+  return calculateAllSystemVariants();
+}
+
+function validateSystemElectrically(busSegments, calcResult) {
+  const errors = [];
+
+  const validatorsCalc = [
+    () => validateBusVoltage(calcResult, busSegments)
+  ];
+  for (const validator of validatorsCalc) {
+    const r = validator();
+    if (!r.valid) errors.push(r);
+  }
+  return errors;
+}
+
+function validateTotalWireLength() {
+  const totalLength = systemData.bus.reduce((sum, seg) => sum + seg.wireLength, 0);
+  if (totalLength > 1000) {
+    return {
+      valid: false,
+      code: "TOO_LONG_WIRE",
+      message: `Całkowita długość magistrali (${totalLength} m) przekracza dozwolone 1000 m.`
+    };
+  }
+  return { valid: true };
+}
+
+
+function validateSignallersCount() {
+  const count = systemData.bus.filter(seg => seg.detector.class === "signaller").length;
+  if (count > 26) {
+    return {
+      valid: false,
+      code: "TOO_MANY_SIGNALLERS",
+      message: `Za dużo sygnalizatorów (${count}), limit to 26.`
+    };
+  }
+  return { valid: true };
+}
+
+function validateValvesCount() {
+  const count = systemData.bus.filter(seg => seg.detector.type === "valveCtrl").length;
+  if (count > 8) {
+    return {
+      valid: false,
+      code: "TOO_MANY_VALVES!",
+      message: `Za dużo zaworów (${count}), limit to 8.`
+    };
+  }
+  return { valid: true };
+}
+
+function validateBusVoltage(result, busSegments) {
+  for (const seg of result.segmentData) {
+    const minV = busSegments[seg.segmentIndex].detector.minVoltage_V;
+    if (seg.voltageAtNode < minV) {
+      return {
+        valid: false,
+        code: "LOW_VOLTAGE_ON_BUS",
+        message: `Za niskie napięcie na segmencie ${seg.segmentIndex}: ${seg.voltageAtNode.toFixed(2)}V < ${minV}V`
+      };
+    }
+  }
+  return { valid: true };
 }

@@ -248,8 +248,9 @@ function handleFormSubmit() {
       });
     }
     systemData.selectedStructure = initSystem.selectedStructure;
-    const res = calculateAllSystemVariants();
+    const res = validateSystem();
     const selectedPSU = res.find(element => element.isUserSelected === true ? element : '');
+    console.log(selectedPSU)
     if (selectedPSU) {
       systemData.supplyType = selectedPSU.supplyType;
       systemData.wireType = selectedPSU.validCables[0].cableType.type;
@@ -259,7 +260,7 @@ function handleFormSubmit() {
     } else {
 
     }
-    showOverlayPanel(res);
+    // showOverlayPanel(res);
     setSystem();
     system.scrollIntoView({ behavior: "smooth", block: "start" });
   });

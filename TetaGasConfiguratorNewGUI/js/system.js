@@ -379,6 +379,7 @@ function setupSystemEventHandlers() {
           }
         }
       });
+      validateSystem();
       funtionToUpdateSystem();
       checkIfToledExists();
       updateSystemPowerSupply();
@@ -402,6 +403,11 @@ function setupSystemEventHandlers() {
       checkIfToledExists();
     }
 
+    if(btn.matches("button.modControlList")) {
+      const res = validateSystem();
+      showOverlayPanel(res);
+    }
+
     // Zaznacz wszystkie
     if (btn.matches(".checkAll")) {
       document.querySelectorAll(".segmentCheckbox").forEach((cb) => (cb.checked = true));
@@ -418,7 +424,7 @@ function setupSystemEventHandlers() {
     } else if (btn.matches("button#exportToJSON")) {
       exportToJSON();
     }
-
+    validateSystem();
     funtionToUpdateSystem();
     checkIfToledExists();
   });
