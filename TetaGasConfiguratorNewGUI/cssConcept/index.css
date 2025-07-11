@@ -623,3 +623,18 @@ header #configuratorLanguage .langLink:first-child {
   justify-self: center;
   align-self: center;
 }
+
+@media screen and (max-width: 480px) {
+  .configuratorPanel, .dragAndDropPanel {
+    padding: 5px 2px;
+  }
+  .panelHeaderContainer h3 {
+    font-size: 14px;
+    padding: 10px 8px;
+  }
+  .formButton {
+    width: 100%;
+    min-width: 110px;
+    font-size: 13px;
+  }
+}

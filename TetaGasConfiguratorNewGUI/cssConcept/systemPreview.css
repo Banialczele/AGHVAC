@@ -366,3 +366,9 @@
   justify-self: center;
   margin: 0;
 }
+
+@media screen and (max-width: 480px) {
+  .systemGraphics .systemDiagram .deviceSegment {
+    grid-template-rows: 120px;
+  }
+}

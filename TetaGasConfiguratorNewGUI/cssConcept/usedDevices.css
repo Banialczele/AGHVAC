@@ -90,3 +90,16 @@
     align-self: center;
   }
 }
+
+@media screen and (max-width: 400px) {
+  #usedDevicesContainer .usedDeviceItem {
+    padding: 12px 0;
+  }
+  .usedDeviceImageContainer img {
+    max-width: 45px;
+    max-height: 55px;
+  }
+  .systemUsedDeviceDataContainer, .usedDeviceImageContainer {
+    font-size: 10px;
+  }
+}

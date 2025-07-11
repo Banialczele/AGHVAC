@@ -274,10 +274,21 @@ function setList(listName, deviceList) {
     listToSet.appendChild(createListItem(key, value));
   }
 }
+
+
+
+
+
 // Tworzenie systemu
 function setSystem() {
+  const actionsList = document.getElementById('actionsList');
+  const keep = [0, 1];
+  Array.from(actionsList.children).forEach((child, idx) => {
+    if (!keep.includes(idx)) actionsList.removeChild(child);
+  });
+  setSystemSegmentsLazy(systemData.bus);
   copyImageSegmentOnFormSubmit(1);
-  copyActionsSegmentOnFormSubmit(1);
+  // copyActionsSegmentOnFormSubmit(1);
   generateOptionsForModControl(systemData.supplyType);
   fillData();
   funtionToUpdateSystem();
@@ -693,16 +704,68 @@ function updateSystemPowerSupply() {
   powerSupplyList.querySelector(`#wireCrossSection`).innerText = systemData.wireType;
 }
 
-const data = [
-  {
-    id: 1,
-    name: "Zasilacz 24V 100W",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/0d/MeanWell_HDR-60-24_power_supply.jpg",
-    value: "Moc zużywana: 39.2W",
-    cables: [
-      { type: "YDYp 2x1.5", totalPowerUsed: 39.2 },
-      { type: "YDYp 2x2.5", totalPowerUsed: 38.6 }
-    ]
-  },
-];
+function setSystemSegmentsLazy(bus) {
+  const container = document.getElementById('actionsList');
+  const SEGMENT_BATCH_SIZE = 10;
+  let loadedCount = 1; // Start od 2, bo 0 i 1 już są w DOM!
 
+  function renderSegment(index) {
+    const template = document.getElementById('actionsSegment1');
+    const newSegment = template.cloneNode(true);
+    newSegment.style.display = '';
+    newSegment.id = `actionsSegment${index}`;
+    newSegment.dataset.segmentindex = index;
+
+    // Numer segmentu
+    const inputId = newSegment.querySelector('.segmentId');
+    if (inputId) {
+      inputId.value = index;
+      inputId.id = `actionsSegmentIndex${index}`;
+    }
+    // Select urządzenia
+    const select = newSegment.querySelector('.segmentDeviceSelect');
+    if (select && systemData.bus[index] && systemData.bus[index].detector) {
+      select.value = systemData.bus[index].detector.type || "";
+      select.id = `actionsSegmentDevice${index}`;
+    }
+    // Długość kabla
+    const wireLengthInput = newSegment.querySelector('.segmentWireLength');
+    if (wireLengthInput && systemData.bus[index] && systemData.bus[index].wireLength) {
+      wireLengthInput.value = systemData.bus[index].wireLength;
+      wireLengthInput.id = `actionsSegmentWireLength${index}`;
+    }
+    // Przycisk duplikacji i usuwania
+    const dupBtn = newSegment.querySelector('.duplicateDeviceButton');
+    if (dupBtn) dupBtn.id = `duplicateDevice${index}`;
+    const remBtn = newSegment.querySelector('.removeDeviceButton');
+    if (remBtn) remBtn.id = `removeDevice${index}`;
+    return newSegment;
+  }
+
+  function loadMoreSegments() {
+    const end = Math.min(loadedCount + SEGMENT_BATCH_SIZE, bus.length);
+    for (let i = loadedCount; i < end; i++) {
+      const seg = renderSegment(i);
+      if (seg) container.appendChild(seg);
+    }
+    loadedCount = end;
+  }
+
+  loadMoreSegments();
+
+  function onScroll() {
+    if (container.scrollTop + container.clientHeight >= container.scrollHeight - 10) {
+      if (loadedCount < bus.length) loadMoreSegments();
+    }
+  }
+  container.removeEventListener('scroll', container._infiniteScrollHandler || (() => {}));
+  container._infiniteScrollHandler = onScroll;
+  container.addEventListener('scroll', onScroll);
+
+  setTimeout(function tryLoadMore() {
+    if (loadedCount < bus.length && container.scrollHeight <= container.clientHeight) {
+      loadMoreSegments();
+      setTimeout(tryLoadMore, 100);
+    }
+  }, 100);
+}
