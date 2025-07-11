@@ -184,21 +184,20 @@ function handleFormSubmit() {
     systemData.selectedStructure = initSystem.selectedStructure;
     const res = validateSystem();
     console.log(res)
-    const selectedPSU = res.find(element => element.isUserSelected === true ? element : '');
-    if (selectedPSU) {
-      systemData.supplyType = selectedPSU.supplyType;
-      systemData.wireType = selectedPSU.validCables[0].cableType.type;
-      systemData.totalPower = selectedPSU.validCables[0].totalPower;
-      systemData.totalCurrent = selectedPSU.validCables[0].totalCurrent;
-      systemData.totalVoltage = selectedPSU.validCables[0].totalVoltage;
-    } else {
-      systemData.supplyType = res[0].supplyType;
-      systemData.wireType = res[0].validCables[0].cableType.type;
-      systemData.totalPower = res[0].validCables[0].totalPower;
-      systemData.totalCurrent = res[0].validCables[0].totalCurrent;
-      systemData.totalVoltage = res[0].validCables[0].totalVoltage;
-    }
-    // showOverlayPanel(res);
+    const selectedPSU = res.results.find(element => element.isUserSelected === true ? element : '');
+    console.log(`domyślny:}`);
+    console.log(selectedPSU);
+    console.log()
+    //sprawdzam czy zasilacz wybrany domyślnie przez system jest odpowiednim
+    const dataToFill = selectedPSU !== undefined ? selectedPSU : res.results[0];
+    console.log(`pierwszy z brzegu`)
+    console.log(dataToFill)
+    systemData.supplyType = dataToFill.supplyType;
+    systemData.wireType = dataToFill.validCables[0].cableType.type;
+    systemData.totalPower = dataToFill.validCables[0].totalPower;
+    systemData.totalCurrent = dataToFill.validCables[0].totalCurrent;
+    systemData.totalVoltage = dataToFill.validCables[0].totalVoltage;
+
     setSystem();
     system.scrollIntoView({ behavior: "smooth", block: "start" });
   });

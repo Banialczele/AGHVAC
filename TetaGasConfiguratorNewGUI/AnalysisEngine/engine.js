@@ -93,14 +93,27 @@ function calculateAllSystemVariants() {
   const selectedSupply = systemData.supplyType;
   const allResults = [];
 
-  //zbieramy napięcia dostępne w zasilaczach
+  // zbieramy napięcia dostępne w zasilaczach
   function getAvailableVoltages(supply) {
     const voltages = [];
     if (supply.description?.voltageOut_V) voltages.push(supply.description.voltageOut_V);
     if (supply.description?.voltageOut_V48) voltages.push(supply.description.voltageOut_V48);
     return voltages;
   }
-  //bierzemy konkretny zasilacz i przypisujemy dane potrzebne do dalszych obliczeń
+
+  // walidacja danych wprowadzonych przez użytkownika (TUTAJ TYLKO RAZ!)
+  const errors = [];
+  const validatorsSimple = [
+    () => validateTotalWireLength(),
+    () => validateSignallersCount(),
+    () => validateValvesCount()
+  ];
+  for (const validator of validatorsSimple) {
+    const r = validator();
+    if (!r.valid) errors.push(r);
+  }
+
+  // bierzemy konkretny zasilacz i przypisujemy dane potrzebne do dalszych obliczeń
   function evaluateSupplyWithVoltage(baseSupply, voltage, isUserSelected = false) {
     const supply = {
       ...baseSupply,
@@ -112,7 +125,7 @@ function calculateAllSystemVariants() {
     };
 
     const validCables = [];
-    //sprawdzamy każdy kabel dla konkretnego zasilacza czy jest w stanie podołać zadaniu, zwracamy tylko kable OK.
+    // sprawdzamy każdy kabel dla konkretnego zasilacza czy jest w stanie podołać zadaniu, zwracamy tylko kable OK.
     for (const cable of cables) {
       const result = calculateRealisticSystemStatus(
         supply,
@@ -128,28 +141,13 @@ function calculateAllSystemVariants() {
         });
       }
     }
-    //jeżeli żaden kabel nie działa pomiń zasilacz.
+    // jeżeli żaden kabel nie działa pomiń zasilacz.
     if (validCables.length === 0) return null;
-
-    const errors = [];
-    //walidacja danych wprowadzonych przez użytkownika
-    const validatorsSimple = [
-      () => validateTotalWireLength(),
-      () => validateSignallersCount(),
-      () => validateValvesCount()
-    ];
-
-
-    for (const validator of validatorsSimple) {
-      const r = validator();
-      if (!r.valid) errors.push(r);
-    }
 
     return {
       supplyType: supply,
       isUserSelected,
-      validCables,
-      errors
+      validCables
     };
   }
 
@@ -171,7 +169,11 @@ function calculateAllSystemVariants() {
     }
   }
 
-  return allResults;
+  // ZWRACASZ obiekt z wynikami i jedną tablicą errors
+  return {
+    results: allResults,
+    errors: errors
+  };
 }
 
 function validateSystem() {

@@ -348,8 +348,8 @@ function showOverlayPanel(data) {
   list.querySelectorAll('.panel-col:not(.template)').forEach(e => e.remove()); // wyczyść poprzednie (nie szablon!)
 
   const template = document.getElementById('colTemplate');
-
-  data.forEach(item => {
+  console.log(data)
+  data.results.forEach(item => {
     const col = template.cloneNode(true);
     col.classList.remove('template');
     col.id = ''; // usuwamy id z klona!
