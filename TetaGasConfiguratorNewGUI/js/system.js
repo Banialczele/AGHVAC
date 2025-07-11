@@ -403,7 +403,7 @@ function setupSystemEventHandlers() {
       checkIfToledExists();
     }
 
-    if(btn.matches("button.modControlList")) {
+    if (btn.matches("button.modControlList")) {
       const res = validateSystem();
       showOverlayPanel(res);
     }
@@ -428,6 +428,22 @@ function setupSystemEventHandlers() {
     funtionToUpdateSystem();
     checkIfToledExists();
   });
+  const overlayPanel = document.querySelector('.overlay-panel-content');
+
+  if (overlayPanel) {
+    overlayPanel.addEventListener('wheel', function (e) {
+      // znajdź najbliższą listę przewijaną
+      const scrollList = overlayPanel.querySelector('.overlay-scroll-list');
+      if (
+        scrollList &&
+        Math.abs(e.deltaY) > Math.abs(e.deltaX) &&
+        scrollList.scrollWidth > scrollList.clientWidth // tylko jeśli jest overflow!
+      ) {
+        e.preventDefault();
+        scrollList.scrollLeft += e.deltaY *2;
+      }
+    }, { passive: false });
+  }
 }
 
 function checkIfToledExists() {

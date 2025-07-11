@@ -154,6 +154,7 @@ function findControlUnit() {
 function showOverlayPanel(data) {
   const overlay = document.getElementById('overlayPanel');
   const list = document.getElementById('overlayList');
+
   list.querySelectorAll('.panel-col:not(.template)').forEach(e => e.remove()); // wyczyść poprzednie (nie szablon!)
 
   const template = document.getElementById('colTemplate');
