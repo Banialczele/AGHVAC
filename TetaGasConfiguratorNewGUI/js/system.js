@@ -329,6 +329,78 @@ function setUsedDevices() {
   return result;
 }
 
+
+function showOverlayPanel(data) {
+  const overlay = document.getElementById('overlayPanel');
+  const list = document.getElementById('overlayList');
+
+  list.querySelectorAll('.panel-col:not(.template)').forEach(e => e.remove()); // wyczyść poprzednie (nie szablon!)
+
+  const template = document.getElementById('colTemplate');
+
+  data.forEach(item => {
+    const col = template.cloneNode(true);
+    col.classList.remove('template');
+    col.id = ''; // usuwamy id z klona!
+    col.style.display = '';
+
+    // Obrazek
+    const img = col.querySelector('.img');
+    img.src = `./PNG/${item.supplyType.img}.png`;
+    img.alt = item.supplyType.type;
+
+    // Nazwa
+    col.querySelector('.name').textContent = item.supplyType.type;
+    // Dodatkowa wartość
+    col.querySelector('.productKey').textContent = item.supplyType.productKey;
+
+    // Kabel: select dla wielu, info dla jednego
+    const select = col.querySelector('.cable-select');
+    if (item.validCables.length > 0) {
+      item.validCables.forEach(cable => {
+        const option = document.createElement(`option`);
+        option.textContent = cable.cableType.type;
+        option.value = cable.cableType.type;
+        select.appendChild(option);
+      })
+    }
+    select.value = item.validCables[0].cableType.type;
+    select.addEventListener(`change`, e => updateDataInOverlay(e, col, item));
+    col.querySelector(`.totalPower`).textContent = `Pobór mocy: ${item.validCables[0].totalPower}W`;
+    col.querySelector(`.totalCurrent`).textContent = `Prąd: ${item.validCables[0].totalCurrent}A`;
+    col.querySelector(`.totalVoltage`).textContent = `Napięcie: ${item.validCables[0].totalVoltage}V`;
+
+    col.querySelector('.choose-btn').onclick = () => {
+      const selectedCableType = select.value;
+      const selectedCable = item.validCables.find(cab => cab.cableType.type === selectedCableType);
+      systemData.supplyType = item.supplyType;
+      systemData.wireType = selectedCable.cableType.type
+      systemData.totalCurrent = selectedCable.totalCurrent;
+      systemData.totalPower = selectedCable.totalPower;
+      systemData.totalVoltage = selectedCable.totalVoltage;
+      updateSystemPowerSupply();
+      hideOverlayPanel();
+    }
+
+    list.appendChild(col);
+  });
+
+  overlay.classList.remove('hidden');
+}
+
+
+function updateDataInOverlay(event, col, item) {
+  const newCable = item.validCables.find(cable => cable.cableType.type === event.target.value);
+  col.querySelector(`.totalPower`).textContent = `Pobór mocy: ${newCable.totalPower}W`;
+  col.querySelector(`.totalCurrent`).textContent = `Prąd: ${newCable.totalCurrent}A`;
+  col.querySelector(`.totalVoltage`).textContent = `Napięcie: ${newCable.totalVoltage}V`;
+}
+
+function hideOverlayPanel() {
+  document.getElementById('overlayPanel').classList.add('hidden');
+}
+
+
 function setupSystemEventHandlers() {
   const container = document.getElementById("system");
   container.addEventListener("change", (event) => {
@@ -368,7 +440,6 @@ function setupSystemEventHandlers() {
               const toledSelect = segment.querySelector(`.toledDescriptionSelect select`);
               systemData.bus[index - 1].description = toledSelect.value;
             }
-            console.log(index);
             systemData.bus[index - 1].detector = { ...selected };
           }
           if (changeElement.matches("select.toledSelect")) {
@@ -404,7 +475,9 @@ function setupSystemEventHandlers() {
     }
 
     if (btn.matches("button.modControlList")) {
+      console.log('adfggag')
       const res = validateSystem();
+      console.log(res)
       showOverlayPanel(res);
     }
 
@@ -412,8 +485,8 @@ function setupSystemEventHandlers() {
     if (btn.matches(".checkAll")) {
       document.querySelectorAll(".segmentCheckbox").forEach((cb) => (cb.checked = true));
     }
-    if (btn.matches("choose-btn")) {
-      console.log(event.target.value)
+    if (btn.matches(`.close-btn`)) {
+      hideOverlayPanel();
     }
 
     // Odznacz wszystkie
@@ -440,7 +513,7 @@ function setupSystemEventHandlers() {
         scrollList.scrollWidth > scrollList.clientWidth // tylko jeśli jest overflow!
       ) {
         e.preventDefault();
-        scrollList.scrollLeft += e.deltaY *2;
+        scrollList.scrollLeft += e.deltaY * 2;
       }
     }, { passive: false });
   }
@@ -617,7 +690,6 @@ function updateSystemPowerSupply() {
   powerSupplyList.querySelector(`.modControlType`).innerText = systemData.supplyType.type;
   powerSupplyList.querySelector(`#powerSupply`).innerText = systemData.supplyType.productKey;
   powerSupplyList.querySelector(`#powerSupplyCableDim`).innerText = TRANSLATION.powerSupplyCableDim[lang];
-  //systemData.zastosowanyPrzewódŚrednica!
   powerSupplyList.querySelector(`#wireCrossSection`).innerText = systemData.wireType;
 }
 

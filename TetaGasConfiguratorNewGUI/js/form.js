@@ -151,59 +151,6 @@ function findControlUnit() {
   return backUpOption;
 }
 
-function showOverlayPanel(data) {
-  const overlay = document.getElementById('overlayPanel');
-  const list = document.getElementById('overlayList');
-
-  list.querySelectorAll('.panel-col:not(.template)').forEach(e => e.remove()); // wyczyść poprzednie (nie szablon!)
-
-  const template = document.getElementById('colTemplate');
-
-  data.forEach(item => {
-    const col = template.cloneNode(true);
-    col.classList.remove('template');
-    col.id = ''; // usuwamy id z klona!
-    col.style.display = '';
-
-    // Obrazek
-    const img = col.querySelector('.img');
-    img.src = `./PNG/${item.supplyType.img}.png`;
-    img.alt = item.supplyType.type;
-
-    // Nazwa
-    col.querySelector('.name').textContent = item.supplyType.type;
-    // Dodatkowa wartość
-    col.querySelector('.productKey').textContent = item.supplyType.productKey;
-    // col.querySelector(`.totalPower`).textContent = item.
-
-    // Kabel: select dla wielu, info dla jednego
-    const select = col.querySelector('.cable-select');
-    if (item.validCables.length > 0) {
-      item.validCables.forEach(cable => {
-        const option = document.createElement(`option`);
-        option.textContent = cable.cableType.type;
-        option.value = cable.cableType.type;
-        select.appendChild(option);
-      })
-    }
-    select.value = item.validCables[0].cableType.type;
-    select.addEventListener(`change`, e => updateDataInOverlay(e, col, item));
-    col.querySelector(`.totalPower`).textContent = `Pobór mocy: ${item.validCables[0].totalPower}W`;
-    col.querySelector(`.totalCurrent`).textContent = `Prąd: ${item.validCables[0].totalCurrent}A`;
-    col.querySelector(`.totalVoltage`).textContent = `Napięcie: ${item.validCables[0].totalVoltage}V`;
-
-    // Przycisk
-    col.querySelector('.choose-btn').onclick = () => {
-      updateModControlAndCable(item, select.value)
-      hideOverlayPanel();
-    };
-
-    list.appendChild(col);
-  });
-
-  overlay.classList.remove('hidden');
-}
-
 function updateModControlAndCable(item, newCable) {
   const modControl = CONTROLUNITLIST.find(unit => unit.productKey === item.supplyType.productKey);
   const elem = item.validCables.find(cable => cable.cableType.type === newCable);
@@ -213,20 +160,6 @@ function updateModControlAndCable(item, newCable) {
   systemData.totalPower = elem.totalPower;
   systemData.totalVoltage = elem.totalVoltage;
   systemData.wireType = elem.cableType.type
-}
-
-function updateDataInOverlay(event, col, item) {
-  const newCable = item.validCables.find(cable => cable.cableType.type === event.target.value);
-  col.querySelector(`.totalPower`).textContent = `Pobór mocy: ${newCable.totalPower}W`;
-  col.querySelector(`.totalCurrent`).textContent = `Prąd: ${newCable.totalCurrent}A`;
-  col.querySelector(`.totalVoltage`).textContent = `Napięcie: ${newCable.totalVoltage}V`;
-}
-
-document.querySelector('.close-btn').onclick = hideOverlayPanel;
-document.querySelector('.overlay-panel-backdrop').onclick = hideOverlayPanel;
-
-function hideOverlayPanel() {
-  document.getElementById('overlayPanel').classList.add('hidden');
 }
 
 // Przetwarzanie formularza dot. systemu
@@ -250,8 +183,8 @@ function handleFormSubmit() {
     }
     systemData.selectedStructure = initSystem.selectedStructure;
     const res = validateSystem();
+    console.log(res)
     const selectedPSU = res.find(element => element.isUserSelected === true ? element : '');
-    console.log(selectedPSU)
     if (selectedPSU) {
       systemData.supplyType = selectedPSU.supplyType;
       systemData.wireType = selectedPSU.validCables[0].cableType.type;
@@ -259,7 +192,11 @@ function handleFormSubmit() {
       systemData.totalCurrent = selectedPSU.validCables[0].totalCurrent;
       systemData.totalVoltage = selectedPSU.validCables[0].totalVoltage;
     } else {
-
+      systemData.supplyType = res[0].supplyType;
+      systemData.wireType = res[0].validCables[0].cableType.type;
+      systemData.totalPower = res[0].validCables[0].totalPower;
+      systemData.totalCurrent = res[0].validCables[0].totalCurrent;
+      systemData.totalVoltage = res[0].validCables[0].totalVoltage;
     }
     // showOverlayPanel(res);
     setSystem();

@@ -272,6 +272,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .overlay-panel {
   position: fixed;
   inset: 0;
@@ -365,7 +366,9 @@
   flex: 0 0 330px;
   max-width: 330px;
   min-width: 270px;
-  height: 100%;
+  min-height: unset;
+  max-height: unset;
+  height: auto;
   box-sizing: border-box;
   scroll-snap-align: start;
   background: #f6f7fb;
@@ -408,7 +411,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 0;
+  min-height: unset;
   gap: 10px;
 }
 
@@ -421,9 +424,6 @@
   word-break: break-word;
   white-space: normal;
   line-height: 1.16;
-  min-height: 2.6em; 
-  max-height: 3.6em;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -436,9 +436,8 @@
   text-align: center;
   word-break: break-all;
   white-space: normal;
-  min-height: 1.2em;
+ 
   margin-bottom: 5px;
-  overflow: hidden;
 }
 
 /* Kabel select */
