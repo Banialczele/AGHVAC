@@ -1,0 +1,31 @@
+.powerSupplyContainer {
+    display: grid;
+    grid-template-columns: 1fr 100px 100px 1fr;
+    grid-template-rows: 75px;
+    place-items: center;
+    grid-template-areas: 
+        ". psuImage . psuSelect";
+}
+
+.fileDiv {
+    grid-area: fileButtons;
+    text-align: center;
+}
+
+.fileDiv > input, #readSystemFromFile {
+    min-width: 120px;
+}
+
+.powerSupplyContainer .psuImageContainer {
+    grid-column: 2 / span 2;
+    height: 100%;
+    width: 100%;
+}
+
+.powerSupplyContainer .psuImageContainer img {
+    height: 100%;     
+}
+
+.powerSupplyContainer label {
+    grid-area: psuSelect;
+}

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   width="25mm"
+   height="30mm"
+   viewBox="2000 23000 2500 3000"
+   preserveAspectRatio="xMidYMid"
+   fill-rule="evenodd"
+   stroke-width="28.222"
+   stroke-linejoin="round"
+   xml:space="preserve"
+   id="svg39"
+   sodipodi:docname="SOLERT.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:ooo="http://xml.openoffice.org/svg/export"><sodipodi:namedview
+   id="namedview39"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:document-units="mm"
+   inkscape:zoom="10.503958"
+   inkscape:cx="47.220295"
+   inkscape:cy="56.692915"
+   inkscape:window-width="2560"
+   inkscape:window-height="1387"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg39" />
+ <defs
+   class="ClipPathGroup"
+   id="defs2">
+  <clipPath
+   id="presentation_clip_path"
+   clipPathUnits="userSpaceOnUse">
+   <rect
+   x="2000"
+   y="23000"
+   width="2500"
+   height="3000"
+   id="rect1" />
+  </clipPath>
+  <clipPath
+   id="presentation_clip_path_shrink"
+   clipPathUnits="userSpaceOnUse">
+   <rect
+   x="2002"
+   y="23003"
+   width="2495"
+   height="2994"
+   id="rect2" />
+  </clipPath>
+ </defs>
+ <defs
+   id="defs10">
+  <font
+   id="EmbeddedFont_1"
+   horiz-adv-x="2048">
+   <font-face
+   font-family="Calibri embedded"
+   units-per-em="2048"
+   font-weight="bold"
+   font-style="normal"
+   ascent="1535"
+   descent="503"
+   id="font-face2" />
+   <missing-glyph
+   horiz-adv-x="2048"
+   d="M 0,0 L 2047,0 2047,2047 0,2047 0,0 Z"
+   id="missing-glyph2" />
+   <glyph
+   unicode="t"
+   horiz-adv-x="662"
+   d="M 654,122 C 654,93 652,70 649,55 645,39 640,28 634,22 628,15 619,10 608,5 596,0 582,-5 567,-8 551,-12 534,-15 516,-17 497,-19 479,-20 460,-20 410,-20 367,-14 330,-1 293,12 263,31 239,58 215,84 197,117 186,157 175,197 169,244 169,299 L 169,756 62,756 C 49,756 40,764 33,780 26,795 23,821 23,858 23,877 24,894 26,907 27,920 30,931 33,939 36,946 41,952 46,955 51,958 56,960 63,960 L 169,960 169,1159 C 169,1166 171,1172 175,1177 178,1182 185,1187 195,1191 204,1194 217,1197 234,1199 250,1200 270,1201 294,1201 319,1201 339,1200 356,1199 372,1197 385,1194 394,1191 403,1187 410,1182 414,1177 418,1172 420,1166 420,1159 L 420,960 614,960 C 621,960 627,958 632,955 637,952 641,946 644,939 647,931 650,920 652,907 653,894 654,877 654,858 654,821 651,795 644,780 637,764 628,756 615,756 L 420,756 420,337 C 420,288 428,252 443,228 458,203 486,191 525,191 538,191 550,192 561,195 572,197 581,200 590,203 598,206 605,208 611,211 616,213 621,214 626,214 630,214 634,213 638,211 641,208 644,204 646,197 648,190 650,180 652,168 653,156 654,141 654,122 Z"
+   id="glyph2" />
+   <glyph
+   unicode="e"
+   horiz-adv-x="901"
+   d="M 950,506 C 950,475 943,453 930,438 916,423 897,416 873,416 L 330,416 C 330,378 335,344 344,313 353,282 367,255 387,234 406,212 432,195 463,184 494,173 531,167 574,167 618,167 657,170 690,177 723,183 752,190 777,198 801,205 821,212 837,219 853,225 866,228 876,228 882,228 887,227 891,225 895,222 898,218 901,212 904,206 906,198 907,187 908,176 908,162 908,145 908,130 908,118 907,108 906,97 905,88 904,81 903,74 901,68 898,63 895,58 892,53 888,48 883,43 871,37 852,29 833,21 808,13 778,6 748,-2 714,-9 675,-14 636,-20 595,-23 551,-23 472,-23 402,-13 343,7 283,27 233,57 193,98 153,139 123,190 104,252 84,314 74,387 74,470 74,549 84,621 105,685 126,748 156,802 195,847 234,891 282,925 339,948 395,971 458,983 529,983 604,983 668,972 721,950 774,928 817,898 851,859 885,820 910,773 926,720 942,667 950,609 950,546 L 950,506 Z M 706,578 C 708,649 694,704 664,745 633,785 586,805 523,805 491,805 463,799 440,787 416,775 396,759 381,739 365,718 353,694 345,667 336,639 331,609 330,578 L 706,578 Z"
+   id="glyph3" />
+   <glyph
+   unicode="a"
+   horiz-adv-x="848"
+   d="M 886,31 C 886,22 883,14 876,9 869,4 859,0 845,-2 830,-5 809,-6 781,-6 751,-6 729,-5 716,-2 702,0 692,4 687,9 681,14 678,22 678,31 L 678,102 C 641,63 600,32 553,10 506,-12 453,-23 396,-23 349,-23 305,-17 266,-4 226,8 192,26 163,51 134,75 111,105 95,141 79,177 71,219 71,267 71,319 81,364 102,403 122,441 152,473 193,498 233,523 283,541 343,553 403,565 473,571 552,571 L 639,571 639,625 C 639,653 636,678 631,699 625,720 616,737 603,751 590,765 572,775 551,782 529,789 502,792 470,792 428,792 391,787 358,778 325,769 295,758 270,747 245,736 224,725 207,716 190,707 176,702 165,702 158,702 151,704 146,709 140,714 135,720 132,729 128,738 125,748 123,761 121,774 120,788 120,803 120,824 122,840 125,852 128,864 135,875 144,885 153,894 170,905 193,917 216,928 244,939 275,949 306,959 341,967 378,974 415,980 453,983 492,983 562,983 622,976 672,963 721,949 762,928 794,900 826,871 849,835 864,790 879,745 886,692 886,631 L 886,31 Z M 639,413 L 543,413 C 502,413 468,410 439,404 410,398 387,389 369,377 351,365 338,351 330,334 321,317 317,297 317,275 317,238 329,208 353,187 376,166 409,155 451,155 486,155 519,164 549,182 578,200 608,226 639,261 L 639,413 Z"
+   id="glyph4" />
+   <glyph
+   unicode="Z"
+   horiz-adv-x="901"
+   d="M 936,104 C 936,85 935,68 934,55 932,42 929,31 926,23 923,14 919,8 914,5 909,2 903,0 897,0 L 134,0 C 107,0 87,8 73,23 58,38 51,61 51,90 L 51,134 C 51,147 52,160 54,171 55,182 58,193 62,204 66,215 72,228 80,241 87,254 97,270 108,289 L 610,1085 112,1085 C 104,1085 97,1087 92,1091 86,1094 81,1100 78,1108 74,1116 71,1127 70,1140 68,1153 67,1169 67,1188 67,1208 68,1225 70,1239 71,1252 74,1263 78,1272 81,1280 86,1286 92,1289 97,1292 104,1294 112,1294 L 827,1294 C 854,1294 875,1287 888,1273 901,1259 907,1239 907,1214 L 907,1165 C 907,1147 906,1132 905,1119 903,1106 900,1093 896,1081 891,1068 885,1056 878,1043 871,1030 861,1014 850,996 L 356,211 897,211 C 910,211 919,203 926,187 933,171 936,143 936,104 Z"
+   id="glyph5" />
+   <glyph
+   unicode="T"
+   horiz-adv-x="1006"
+   d="M 1002,1186 C 1002,1167 1001,1150 1000,1137 998,1123 995,1112 992,1104 989,1095 985,1089 980,1085 975,1081 969,1079 963,1079 L 639,1079 639,36 C 639,29 637,23 633,18 628,13 621,8 611,5 601,2 588,-1 571,-3 554,-5 532,-6 507,-6 482,-6 461,-5 444,-3 427,-1 413,2 403,5 393,8 386,13 382,18 377,23 375,29 375,36 L 375,1079 51,1079 C 44,1079 39,1081 34,1085 29,1089 25,1095 22,1104 19,1112 16,1123 15,1137 13,1150 12,1167 12,1186 12,1206 13,1223 15,1237 16,1251 19,1262 22,1271 25,1279 29,1285 34,1289 39,1292 44,1294 51,1294 L 963,1294 C 969,1294 975,1292 980,1289 985,1285 989,1279 992,1271 995,1262 998,1251 1000,1237 1001,1223 1002,1206 1002,1186 Z"
+   id="glyph6" />
+   <glyph
+   unicode="S"
+   horiz-adv-x="848"
+   d="M 908,388 C 908,320 895,260 870,209 845,158 810,115 767,81 724,46 673,20 615,3 557,-14 495,-23 429,-23 384,-23 343,-19 305,-12 266,-5 232,4 203,15 174,25 149,36 130,47 110,58 96,68 87,77 78,86 72,98 69,115 65,131 63,154 63,185 63,206 64,223 65,237 66,251 69,262 72,271 75,280 79,286 84,290 89,293 94,295 101,295 110,295 124,290 141,279 158,268 179,255 206,242 233,229 265,217 302,206 339,195 381,189 430,189 462,189 491,193 516,201 541,208 563,219 581,233 598,247 612,264 621,285 630,306 635,329 635,354 635,383 627,409 611,430 595,451 574,469 549,486 523,502 494,517 461,532 428,546 395,561 360,577 325,593 292,611 259,632 226,652 197,676 172,705 146,733 125,766 109,805 93,844 85,890 85,944 85,1006 97,1061 120,1108 143,1155 174,1194 213,1225 252,1256 298,1279 351,1294 404,1309 460,1317 519,1317 550,1317 580,1315 611,1310 642,1305 670,1299 697,1291 724,1283 747,1274 768,1264 789,1254 802,1246 809,1239 816,1232 820,1227 823,1222 825,1217 827,1211 829,1204 830,1196 831,1186 832,1175 833,1163 833,1148 833,1131 833,1112 833,1095 832,1082 831,1069 829,1058 827,1049 824,1040 821,1034 817,1030 812,1026 806,1024 799,1024 792,1024 780,1029 764,1038 748,1047 728,1058 705,1069 682,1080 655,1090 624,1099 593,1108 560,1112 523,1112 494,1112 469,1109 448,1102 427,1095 409,1085 395,1073 380,1060 370,1045 363,1028 356,1011 352,992 352,973 352,944 360,920 376,899 391,878 412,859 439,843 465,826 495,811 528,797 561,782 595,767 630,751 665,735 699,717 732,697 765,676 795,652 821,624 847,595 868,562 884,524 900,485 908,440 908,388 Z"
+   id="glyph7" />
+   <glyph
+   unicode="O"
+   horiz-adv-x="1218"
+   d="M 1305,662 C 1305,555 1292,459 1265,374 1238,289 1199,218 1146,159 1093,100 1028,55 951,24 873,-7 783,-23 681,-23 580,-23 493,-10 418,17 343,43 280,83 230,137 180,191 143,260 118,343 93,426 80,525 80,639 80,744 93,838 120,922 147,1005 186,1076 239,1135 292,1194 357,1239 435,1270 512,1301 602,1317 705,1317 803,1317 890,1304 965,1278 1040,1252 1102,1212 1153,1158 1203,1104 1241,1036 1267,954 1292,871 1305,774 1305,662 Z M 1029,648 C 1029,716 1024,778 1013,834 1002,889 984,937 959,977 933,1016 899,1047 856,1069 813,1090 760,1101 696,1101 631,1101 577,1089 534,1065 491,1040 456,1008 429,967 402,926 384,879 373,825 362,770 356,713 356,652 356,581 361,518 372,462 383,405 401,357 426,317 451,277 485,247 528,226 571,205 624,194 689,194 754,194 808,206 851,230 894,254 929,287 956,328 983,369 1002,418 1013,473 1024,528 1029,586 1029,648 Z"
+   id="glyph8" />
+   <glyph
+   unicode="A"
+   horiz-adv-x="1218"
+   d="M 1201,98 C 1209,74 1214,55 1216,41 1218,27 1215,17 1208,10 1201,3 1188,-2 1169,-3 1150,-5 1125,-6 1092,-6 1058,-6 1032,-5 1013,-4 994,-3 979,-1 969,2 959,5 952,9 948,14 944,19 941,26 938,35 L 851,295 365,295 283,42 C 280,33 277,25 273,19 268,12 261,7 252,4 242,0 228,-3 211,-4 193,-5 170,-6 141,-6 110,-6 86,-5 69,-3 52,-1 40,4 33,12 26,19 24,30 26,44 28,58 33,77 41,100 L 440,1248 C 444,1259 449,1269 454,1276 459,1283 468,1288 480,1292 491,1295 507,1298 528,1299 549,1300 576,1300 610,1300 649,1300 681,1300 704,1299 727,1298 746,1295 759,1292 772,1288 781,1282 787,1275 792,1268 797,1258 801,1245 L 1201,98 Z M 607,1047 L 606,1047 423,497 790,497 607,1047 Z"
+   id="glyph9" />
+   <glyph
+   unicode=" "
+   horiz-adv-x="450"
+   id="glyph10" />
+  </font>
+ </defs>
+ <defs
+   class="TextShapeIndex"
+   id="defs11">
+  <g
+   ooo:slide="id1"
+   ooo:id-list="id3 id4 id5 id6"
+   id="g10" />
+ </defs>
+ <defs
+   class="EmbeddedBulletChars"
+   id="defs20">
+  <g
+   id="bullet-char-template-57356"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 580,1141 L 1163,571 580,0 -4,571 580,1141 Z"
+   id="path11" />
+  </g>
+  <g
+   id="bullet-char-template-57354"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 8,1128 L 1137,1128 1137,0 8,0 8,1128 Z"
+   id="path12" />
+  </g>
+  <g
+   id="bullet-char-template-10146"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 174,0 L 602,739 174,1481 1456,739 174,0 Z M 1358,739 L 309,1346 659,739 1358,739 Z"
+   id="path13" />
+  </g>
+  <g
+   id="bullet-char-template-10132"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 2015,739 L 1276,0 717,0 1260,543 174,543 174,936 1260,936 717,1481 1274,1481 2015,739 Z"
+   id="path14" />
+  </g>
+  <g
+   id="bullet-char-template-10007"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 0,-2 C -7,14 -16,27 -25,37 L 356,567 C 262,823 215,952 215,954 215,979 228,992 255,992 264,992 276,990 289,987 310,991 331,999 354,1012 L 381,999 492,748 772,1049 836,1024 860,1049 C 881,1039 901,1025 922,1006 886,937 835,863 770,784 769,783 710,716 594,584 L 774,223 C 774,196 753,168 711,139 L 727,119 C 717,90 699,76 672,76 641,76 570,178 457,381 L 164,-76 C 142,-110 111,-127 72,-127 30,-127 9,-110 8,-76 1,-67 -2,-52 -2,-32 -2,-23 -1,-13 0,-2 Z"
+   id="path15" />
+  </g>
+  <g
+   id="bullet-char-template-10004"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 285,-33 C 182,-33 111,30 74,156 52,228 41,333 41,471 41,549 55,616 82,672 116,743 169,778 240,778 293,778 328,747 346,684 L 369,508 C 377,444 397,411 428,410 L 1163,1116 C 1174,1127 1196,1133 1229,1133 1271,1133 1292,1118 1292,1087 L 1292,965 C 1292,929 1282,901 1262,881 L 442,47 C 390,-6 338,-33 285,-33 Z"
+   id="path16" />
+  </g>
+  <g
+   id="bullet-char-template-9679"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 813,0 C 632,0 489,54 383,161 276,268 223,411 223,592 223,773 276,916 383,1023 489,1130 632,1184 813,1184 992,1184 1136,1130 1245,1023 1353,916 1407,772 1407,592 1407,412 1353,268 1245,161 1136,54 992,0 813,0 Z"
+   id="path17" />
+  </g>
+  <g
+   id="bullet-char-template-8226"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 346,457 C 273,457 209,483 155,535 101,586 74,649 74,723 74,796 101,859 155,911 209,963 273,989 346,989 419,989 480,963 531,910 582,859 608,796 608,723 608,648 583,586 532,535 482,483 420,457 346,457 Z"
+   id="path18" />
+  </g>
+  <g
+   id="bullet-char-template-8211"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M -4,459 L 1135,459 1135,606 -4,606 -4,459 Z"
+   id="path19" />
+  </g>
+  <g
+   id="bullet-char-template-61548"
+   transform="scale(0.00048828125,-0.00048828125)">
+   <path
+   d="M 173,740 C 173,903 231,1043 346,1159 462,1274 601,1332 765,1332 928,1332 1067,1274 1183,1159 1299,1043 1357,903 1357,740 1357,577 1299,437 1183,322 1067,206 928,148 765,148 601,148 462,206 346,322 231,437 173,577 173,740 Z"
+   id="path20" />
+  </g>
+ </defs>
+ <defs
+   class="TextEmbeddedBitmaps"
+   id="defs21" />
+ <g
+   class="SlideGroup"
+   id="g39">
+  <g
+   id="g38">
+   <g
+   id="container-id1">
+    <g
+   id="id1"
+   class="Slide"
+   clip-path="url(#presentation_clip_path)">
+     <g
+   class="Page"
+   id="g37">
+      <g
+   class="com.sun.star.drawing.CustomShape"
+   id="g21">
+       <g
+   id="id3">
+        <rect
+   class="BoundingBox"
+   stroke="none"
+   fill="none"
+   x="2000"
+   y="23000"
+   width="2501"
+   height="3001"
+   id="rect21" />
+       </g>
+      </g>
+      <g
+   class="Group"
+   id="g36">
+       <g
+   class="Group"
+   id="g34">
+        <g
+   class="Group"
+   id="g30">
+         <g
+   class="Group"
+   id="g29">
+          <g
+   class="Group"
+   id="g24">
+           <g
+   class="com.sun.star.drawing.CustomShape"
+   id="g23">
+            <g
+   id="id4">
+             <rect
+   class="BoundingBox"
+   stroke="none"
+   fill="none"
+   x="2474"
+   y="24225"
+   width="1639"
+   height="964"
+   id="rect22" />
+             <path
+   fill="rgb(255,255,255)"
+   stroke="none"
+   d="M 2651,24250 C 2575,24250 2499,24326 2499,24402 L 2499,25010 C 2499,25086 2575,25163 2651,25163 L 3934,25163 C 4010,25163 4087,25086 4087,25010 L 4087,24402 C 4087,24326 4010,24250 3934,24250 L 2651,24250 Z"
+   id="path22" />
+             <path
+   fill="none"
+   stroke="rgb(0,0,0)"
+   stroke-width="50"
+   stroke-linejoin="round"
+   d="M 2651,24250 C 2575,24250 2499,24326 2499,24402 L 2499,25010 C 2499,25086 2575,25163 2651,25163 L 3934,25163 C 4010,25163 4087,25086 4087,25010 L 4087,24402 C 4087,24326 4010,24250 3934,24250 L 2651,24250 Z"
+   id="path23" />
+            </g>
+           </g>
+          </g>
+          <g
+   class="Graphic"
+   id="g26">
+           <g
+   id="g25">
+            <rect
+   class="BoundingBox"
+   stroke="none"
+   fill="none"
+   x="2613"
+   y="24357"
+   width="568"
+   height="479"
+   id="rect24" />
+            <image
+   x="2613"
+   y="24357"
+   width="568"
+   height="479"
+   preserveAspectRatio="none"
+   xlink:href="data:image/png;base64,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"
+   id="image24" />
+           </g>
+          </g>
+          <g
+   class="Graphic"
+   id="g28">
+           <g
+   id="g27">
+            <rect
+   class="BoundingBox"
+   stroke="none"
+   fill="none"
+   x="3409"
+   y="24339"
+   width="599"
+   height="479"
+   id="rect26" />
+            <image
+   x="3409"
+   y="24339"
+   width="599"
+   height="479"
+   preserveAspectRatio="none"
+   xlink:href="data:image/png;base64,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"
+   id="image26" />
+           </g>
+          </g>
+         </g>
+        </g>
+        <g
+   class="com.sun.star.drawing.TextShape"
+   id="g33">
+         <g
+   id="id5">
+          <rect
+   class="BoundingBox"
+   stroke="none"
+   fill="none"
+   x="2315"
+   y="24710"
+   width="1929"
+   height="820"
+   id="rect30" />
+          <text
+   class="TextShape"
+   id="text33"
+   x="-110.83124"
+   y="-15.113351"><tspan
+     class="TextParagraph"
+     font-family="Calibri, sans-serif"
+     font-size="282px"
+     font-weight="700"
+     id="tspan33"><tspan
+       class="TextPosition"
+       x="2578.1687"
+       y="25031.887"
+       id="tspan32"><tspan
+         fill="#cc3533"
+         stroke="none"
+         id="tspan30">Teta</tspan><tspan
+         fill="#000000"
+         stroke="none"
+         id="tspan31"> SOLERT</tspan></tspan></tspan></text>
+         </g>
+        </g>
+       </g>
+       <g
+   class="com.sun.star.drawing.CustomShape"
+   id="g35">
+        <g
+   id="id6">
+         <rect
+   class="BoundingBox"
+   stroke="none"
+   fill="none"
+   x="2000"
+   y="24480"
+   width="501"
+   height="41"
+   id="rect34" />
+         <path
+   fill="rgb(0,0,0)"
+   stroke="none"
+   d="M 2250,24520 L 2000,24520 2000,24480 2500,24480 2500,24520 2250,24520 Z"
+   id="path34" />
+        </g>
+       </g>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

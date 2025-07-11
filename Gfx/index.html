@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+<style>
+	.grid-container {
+	  display: grid;
+	  grid-template-columns: auto auto auto 1fr;
+	  grid-template-rows: auto auto auto auto auto auto;
+	  grid-template-areas:
+		". CU CU CUPar"
+		"Bus1Par Bus1 Dev1 Dev1Par"
+		"Bus2Par Bus2 Dev2 Dev2Par"
+		"Bus3Par Bus3 Dev3 Dev3Par"
+
+	}
+	
+	.bg {
+		background: linear-gradient(135deg, #F09090 20%, lightpink 100%);
+	}
+
+	.grid-container > div {
+/*		background: linear-gradient(135deg, #F09090 20%, lightgrey 100%);*/
+	}
+	
+	.CU { grid-area: CU; }
+
+	.devPadding { grid-area: devPadding; }
+
+	.Bus1 { grid-area: Bus1; }
+	.Bus1Par { grid-area: Bus1Par; }
+	.Dev1 { grid-area: Dev1; }
+	.Dev1Par { grid-area: Dev1Par; }
+	
+	.Bus2 { grid-area: Bus2; }
+	.Bus2Par { grid-area: Bus2Par; }
+	.Dev2 { grid-area: Dev2; }
+	.Dev2Par { grid-area: Dev2Par; }
+
+	.Bus3 { grid-area: Bus3; }
+	.Bus3Par { grid-area: Bus3Par; }
+	.Dev3 { grid-area: Dev3; }
+	.Dev3Par { grid-area: Dev3Par; }
+
+	.CUPar { grid-area: CUPar; }
+	
+	.deviceImage
+	{
+	 	
+	}
+</style>
+
+</head>
+	<body id="main_body">
+		<p>SystemWiringAdvisor\Gfx - test page.</p>
+		<div class="grid-container">
+			<div class="CU bg"><img class="deviceimage" src="CU.svg"></div>
+			<div class="CUPar"><select><option>48V</option></select></div>
+			
+			<div class="Bus1Par"><select><option>2x1mm2</option></select></div>
+			<div class="Bus1 bg"><img class="deviceImage" src="BusLong.svg"></div>
+			<div class="Dev1Par"><select><option>EcoWent</option></select></div>
+			<div class="Dev1 bg"><img class="deviceImage" src="EcoWent_MiniPel.svg"></div>
+			
+			<div class="Bus2 bg"><img class="deviceImage" src="BusShort.svg"></div>
+			<div class="Dev2 bg"><img class="deviceImage" src="ControlV.svg"></div>
+			<div class="Bus2Par"><select><option>2x2,5mm2</option></select></div>
+			<div class="Dev2Par"><select><option>EcoWent</option></select></div>
+			
+			<div class="Bus3 bg"><img class="deviceImage" src="BusEndShort.svg"></div>
+			<div class="Dev3 bg"><img class="deviceImage" src="SZOA.svg"></div>
+			<div class="Bus3Par"><select><option>2x2,5mm2</option></select></div>
+			<div class="Dev3Par"><select><option>EcoWent</option></select></div>			
+		</div>
+
+	</body>
+</html>

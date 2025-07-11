@@ -1,0 +1,48 @@
+function sumDevicesCurrent(index) {
+  return systemData.bus
+    .slice(index, systemData.bus.length)
+    .reduce((acc, elem) => acc + (elem.detector.current_A ?? 0), 0);
+}
+
+function sumWireLengthFromNodeToEnd(index) {
+  return systemData.bus.slice(index, systemData.bus.length).reduce((acc, elem) => acc + (elem.wireLength ?? 0), 0);
+}
+
+function calculateVoltageDropPerNode() {
+  const result = {};
+  for (let i = systemData.bus.length - 1; i >= 0; i--) {
+    const deviceCurrent = sumDevicesCurrent(i);
+    const wireLengthPerNode = sumWireLengthFromNodeToEnd(i);
+    Cables.forEach((cable) => {
+      const voltageDrop = 2 * wireLengthPerNode * cable.resistivity_OhmPerMeter * deviceCurrent;
+      const voltageAtNode = systemData.supplyType.description.voltageOut_V - voltageDrop;
+
+      // 1️⃣ uwzględnij moc stałą urządzenia
+      const baseCurrent = systemData.bus[i].detector.current_A ?? 0;
+      const constPower = systemData.bus[i].detector.power_W ?? 0;
+      const totalCurrent = baseCurrent + constPower / voltageAtNode;
+
+      // 2️⃣ moc = U × I  (teraz I zawiera oba składniki)
+      const devicePower = voltageAtNode * totalCurrent;
+
+      result[`sekcja${systemData.bus.length - i - 1}`] ??= {};
+      result[`powerSupply`] = {};
+      result[`sekcja${systemData.bus.length - i - 1}`][cable.type] = {
+        segmentDrop: voltageDrop,
+        voltageAtNode,
+        wireLength: wireLengthPerNode,
+        devicePower,
+      };
+      if (voltageAtNode > systemData.bus[i].detector.minVoltage_V) {
+        result[`powerSupply`] = systemData.supplyType;
+      } else {
+        //znajdź inny zailac
+      }
+    });
+  }
+  return result;
+}
+
+function voltageDropPerNode() {
+  console.log(calculateVoltageDropPerNode());
+}

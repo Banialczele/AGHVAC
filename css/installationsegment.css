@@ -1,0 +1,216 @@
+.powerManagementInstallationContainer {
+    background: rgb(255,255,255);
+    margin: 0 auto;
+    max-width: 40%;
+    min-width: 650px;
+    display: grid;
+    position: relative;
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 75px 1fr;
+    grid-template-areas: 
+        "powerSupply"                               
+        "installation";
+}
+
+.powerManagementInstallationContainer .powerSupplyContainer {
+    grid-area: powerSupply;
+    border-radius: 15px;
+    
+    background: rgb(230,230,230);
+}
+.powerManagementInstallationContainer .installationContainer {
+    grid-area: installation;     
+}
+
+.installationSegment {
+    display: grid;
+    grid-template-columns: minmax(200px,1fr) 75px 125px minmax(200px,1fr);
+    grid-template-rows: 150px;
+    grid-template-areas: "checkboxAndWire wireImage deviceImage deviceSelect";
+    border-radius: 15px;
+    position: relative;
+    transition: all .5s ease-in-out;
+}
+
+.installationSegment--delete{
+    position: absolute;
+    transform: translateX(200vw);
+}
+.installationSegment:nth-child(odd) {
+    background: #F0F0F0;
+}
+
+.installationSegment:nth-child(even) {
+    background: rgb(230,230,230);
+}
+
+.installationSegment .checkboxAndcableContainer {
+    grid-area: checkboxAndWire;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 10px 0;
+    position: relative;
+}
+
+.installationSegment .checkboxAndcableContainer .checkboxIteratorContainer {
+    grid-column: 1;
+    grid-row: 1;
+    place-self: start;
+    padding: 0 15px;
+    display: flex;
+    height: 30px;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.installationSegment .checkboxAndcableContainer .cableContainer {
+    grid-column: 2;
+    grid-row: 1;
+    place-self: start;
+    position: absolute;
+    left: 50px;
+}
+
+.cableContainerInput input{
+    max-width: 70%;
+    margin-top: 10px;
+}
+
+.installationSegment .cableImageContainer {
+    grid-area: wireImage;
+}
+
+.installationSegment .deviceImageContainer {
+    grid-area: deviceImage;
+    height: 100%;
+}
+
+.installationSegment .deviceContainer {
+    grid-area: deviceSelect;
+    display: grid;
+    grid-template-columns: 1fr 1fr;    
+    grid-template-rows: 1fr 1fr;
+    padding: 10px 0;
+}
+
+.deviceContainer .deleteButton {
+    grid-column: 2;
+    grid-row: 1;
+    place-self: start end;
+}
+
+.segmentBig {
+    grid-template-columns: minmax(200px,1fr) 75px 125px minmax(200px,1fr);
+    grid-template-rows: 200px;    
+}
+
+.installationSegment .deviceContainer .deviceLabel {
+    grid-row: 2;
+    grid-column: 1 / span 2;
+    align-self: start;
+    margin: 10px 0;
+}
+
+.installationSegment .deviceContainer .deviceButtons {
+    grid-row: 1;
+    grid-column: 1 / span 2; 
+    place-self: start end;
+    display: flex;
+    flex-direction: row;    
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+.deviceButtons input {
+    margin-right: 25px;
+
+}
+
+.deviceContainer img {
+    pointer-events: none;
+    width: auto;
+    height: 20px;
+}
+
+.deviceQuantity {
+    width: 45px;
+}
+
+.configurationPanel {    
+    background: rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 50px 125px 1fr;
+    grid-template-rows: 75px;
+    grid-template-areas: "checkboxLabel checkboxLabel adjustCables systemButtons";
+    position: sticky;
+    border-radius: 15px;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+}       
+
+.configurationPanel #matchCablesToSystem {
+    grid-area: adjustCables;
+    place-self: center;
+}
+
+.configurationPanel .masterCheckboxWithLabel {
+    grid-area: checkboxLabel;
+    place-self: center start;
+    margin: 0 20px;
+}
+
+.deleteManySegmentsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
+
+.deleteManyButton {
+    padding: 0;
+    text-align: center;
+}
+
+.configurationPanel .fileDiv {
+    grid-area: systemButtons;
+    display: flex;
+    flex-direction: column;
+    place-self: center;
+}
+
+.fileDiv > * {
+    margin: 2px 0;
+}
+
+.fileDiv #saveSystemToFile, .fileDiv #readSystemFromFile {
+    padding: 2px 0;
+}
+
+#matchCablesToSystem {
+    padding: 5px 5px;
+}
+
+.fileDiv #saveSystemToFile:hover, .fileDiv #readSystemFromFile:hover, #matchCablesToSystem:hover {
+    background: #bababa;
+}
+
+.copyButton, .deleteButton, .deleteManyButton {
+    background: none;
+    border: none;
+}
+
+.deleteManyButton img {
+    pointer-events: none;
+    width: auto;
+    height: 20px;
+    background: none;
+}
+
+

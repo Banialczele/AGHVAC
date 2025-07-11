@@ -1,0 +1,8 @@
+Project name: 	PS011-002&PROJ (Konfigurator systemu TetaGas (www)) + PS011-001&PROJ (TetaSystemConfiguratorr - Grafiki)
+Description: 	-
+Requirements:	-
+UML model:		-
+
+ADMS URL:
+PS011-001&PROJ -> adms://s:192.168.0.251/b:archidemes/i:223813
+PS011-002&PROJ -> adms://s:192.168.0.251/b:archidemes/i:243875
